@@ -1,0 +1,11 @@
+{
+    "criteria": {
+      "1": {
+        "trigger": "minecraft:changed_dimension"
+      }
+    },
+    "rewards": {
+      "function": "pdi:swap/detect"
+    }
+  }
+  

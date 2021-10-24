@@ -1,0 +1,14 @@
+{
+    "criteria": {
+      "1": {
+        "trigger": "minecraft:impossible"
+      },
+      "2": {
+        "trigger": "minecraft:tick"
+      }
+    },
+    "rewards": {
+      "function": "pdi:swap/respawn/check"
+    }
+  }
+  
