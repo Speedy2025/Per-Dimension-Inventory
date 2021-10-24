@@ -55,9 +55,9 @@ A. *Absolutely not, but you can show your love by reporting any bugs to me on di
 
 ### Q. Can I, a Datapack Developer, change dimensions and stuff?
 
-A. Yes! It's not too complicated either. The function tag `pdi:update_mode` can be included to set dimensions and game modes. Simply add a line in your function inside the tag:
+A. *Yes! It's not too complicated either. The function tag `pdi:update_mode` can be included to set dimensions and game modes. Simply add a line in your function inside the tag:*
 `execute in minecraft:overworld run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 1`
-Change the `minecraft:overworld` to your dimension and change the final number to the dimension group you'd like. If you have questions on the dimension group standards, see pdi:misc/register
+*Change the `minecraft:overworld` to your dimension and change the final number to the dimension group you'd like. If you have questions on the dimension group standards, see pdi:misc/register*
 
 For the brighter of crayons, I've left PDI in a state where you can mess with it yourself through datapacks. You can, in addition to it's normal functionality, manually save inventories, restore inventories, and more. I recommend you read through how it works inside the datapack so that you understand what you're getting into though- you can do some serious damage to players if you don't.
 
@@ -65,7 +65,7 @@ For the brighter of crayons, I've left PDI in a state where you can mess with it
 A. *It's somewhat easy. All you have to do is make sure that any advancement-related things check for the correct dimension group through `c.inv.curr` (idealy 1) or check against it (if it's 2 or more). The second is preferred in most cases to allow people who don't have PDI to still use your datapack. An example of this would be `execute unless score @s c.inv.curr matches 2.. run <stuff>` inside an advancement reward file.
 
 ### Q. I don't want to use SEv3, is there a way around it?
-A. *I- why? Anyways, if you don't want to use SEv3, I plan to release a stand-alone version. Until then, just give everyone the appropriate admin tag `se.disable.all` to disable functionality. As a bonus, you can give them the tags only as you need it. Don't want homes in creative? Give 'em the tags!
+A. *I- why? Anyways, if you don't want to use SEv3, I plan to release a stand-alone version. Until then, just give everyone the appropriate admin tag `se.disable.all` to disable functionality. As a bonus, you can give them the tags only as you need it. Don't want homes in creative? Give 'em the tags!*
 
 
 
