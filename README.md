@@ -50,7 +50,7 @@ Checking if PDI exists should be as simple as checking any random player to see 
 If you don't need to check if PDI exist (like if you're doing a survival-only datapack), you will likely not need to check seperately if the datapack is enabled. Instead, you'll want to include an `unless score (player) c.inv.curr matches 2..` to exclude anyone not in the appropriate mode. For example, on the topic of EnderChest Plus, you initialize a player and set their enderchest when they open it. Since you control the enderchest through the enderchest and don't try to override changes, you are almost PDI compatible. You'll just need to ensure that players can't initialize the enderchest while in any world but survival, which the inclusion of the unless statement will do. This will allow your datapack to be independent of PDI but still enable funcationality. The same goes for advancements, you'll need to check inside the reward functions that they are NOT in any world but survival. You are welcome to do this as you please or outright ignore it, but I recommend testing it to see if it can be exploited.
 
 ## On using PDI's APIs...
-There are (or will be) three main APIs you can use.
+There are (or will be) three main APIs you can use in the form of a function tag.
 1. `pdi:update_mode` - Use this to set dimension & player modes. They WILL go through this unless they have a special bypass tag, detailed later.
 2. `pdi:before_switch` - Use this to handle players that are switching inventories **before** they switch. Useful if you have some temporary items to save.
 3. `pdi:after_switch` - Use this to handle players that are switching inventories **after** they switch. Good to restore or set special items.
