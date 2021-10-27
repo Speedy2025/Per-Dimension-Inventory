@@ -31,45 +31,45 @@ If you know a datapack that is incompatible, please let me AND the original auth
 ## Usage
 This datapack controls the player's inventory, enderchest, and xp levels to allow cross-dimensional play and enable server owners to create experiences not otherwise obtainable. For example, you could make a minigame world and a creative world alongside the expected survival experience. For admins making this experience, see below in the FAQs where I discuss adding your dimension.
 
+## Installing it
+The datapack can simply be dropped into your datapacks folder provided PlayerDB by rx and SEv3 are there.
 
 ## On Bugs...
 While I make a reasonable effort to test on my local world and server before release, I cannot promise this will be bug-free. If you do know bugs, please mesage me on discord **@Speedy2025#2025** or ping me on one of the servers I can be found on.
 
 
-# FAQ
-### Q. Is PDI easy to install?
+# For Datapack Developers
 
-A. *Yes! All you need to do is take the datapack and put it into your datapacks folder inside each world you want it in.*
+## On making your datapack compatible...
+Making your datapack PDI Compatible can be easy or complicated depending on the nature of it. When ensuring that your datapack is PDI compatible, you want to ask yourself what situations would it be used in, if PDI is activated.
+    For more non-survival oriented features, you'll want to check if PDI exists first and then check the scores, see below.
+    For survival things, you'll just want to check the scores.
 
-### Q. Does PDI require any other datapacks or resourcepacks?
+Checking if PDI exists should be as simple as checking any random player to see if they have the `c.inv.curr` objective more than 1. For example, a survival player would *most likely* have a score of `c.inv.curr 1` while a creative player would *most likely* have a score of `c.inv.curr 2`. Admins may deviate from this a little bit, but in those cases players would have a score of 3 or more.
 
-A. *Yes. PlayerDB by @rx#1284 and Speedy's Essentials by @Speedy2025#2025 (me!) are manditory. There will soon be a release that doesn't require either, stay tuned.*
+If you don't need to check if PDI exist (like if you're doing a survival-only datapack), you will likely not need to check seperately if the datapack is enabled. Instead, you'll want to include an `unless score (player) c.inv.curr 2..` to exclude anyone not in the appropriate mode. For example, on the topic of EnderChest Plus, you initialize a player and set their enderchest when they open it. Since you control the enderchest through the enderchest and don't try to override changes, you are almost PDI compatible. You'll just need to ensure that players can't initialize the enderchest while in any world but survival, which the inclusion of the unless statement will do. This will allow your datapack to be independent of PDI but still enable funcationality. The same goes for advancements, you'll need to check inside the reward functions that they are NOT in any world but survival. You are welcome to do this as you please or outright ignore it, but I recommend testing it to see if it can be exploited.
 
-### Q. How do I use (insert feature) in PDI?
+## On using PDI's APIs...
+There are (or will be) three main APIs you can use.
+1. `pdi:update_mode` - Use this to set dimension & player modes. They WILL go through this unless they have a special bypass tag, detailed later.
+2. `pdi:before_switch` - Use this to handle players that are switching inventories **before** they switch. Useful if you have some temporary items to save.
+3. `pdi:after_switch` - Use this to handle players that are switching inventories **after** they switch. Good to restore or set special items.
 
-A. * /_(o.o)_/ - In all seriousness, this is meant for datapack developers. I've explained some of it inside the function files, but see below for adding your worlds.*
-
-### Q. Can I give you a hug and kiss?
-
-A. *Absolutely not, but you can show your love by reporting any bugs to me on discord* **@Speedy2025#2025**. *You can find me on the r/MinecraftCommands discord or on @rx#1284's discord*
-
-### Q. Can I, a Datapack Developer, change dimensions and stuff?
-
-A. *Yes! It's not too complicated either. The function tag `pdi:update_mode` can be included to set dimensions and game modes. Simply add a line in your function inside the tag:*
-
+### On pdi:update_mode...
+This particular one requires a special format for your commands. You can simplify them as you see fit, but for readability I recommend you stick to this format:
 `execute in minecraft:overworld run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 1`
 
-*Change the `minecraft:overworld` to your dimension and change the final number to the dimension group you'd like. If you have questions on the dimension group standards, see pdi:misc/register*
+You do not need to add your dimension if it is going to be just survival. You only need to add it if you want a different gamemode, such as if you are making a creative pocket dimension for redstone. Simply change the `minecraft:overworld` to your dimension's name and change the score at the end to whatever you want. For example, this is one of my custom dimensions that I added:
+`execute in tser_dim:night_mg run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 11`
 
-For the brighter of crayons, I've left PDI in a state where you can mess with it yourself through datapacks. You can, in addition to it's normal functionality, manually save inventories, restore inventories, and more. I recommend you read through how it works inside the datapack so that you understand what you're getting into though- you can do some serious damage to players if you don't.
+In this example, I set my custom dimension `tser_dim:night_mg` to inventory 11.
 
-### Q. How can I be PDI Compatible and make it to the list?
-A. *It's somewhat easy. All you have to do is make sure that any advancement-related things check for the correct dimension group through `c.inv.curr` (idealy 1) or check against it (if it's 2 or more). The second is preferred in most cases to allow people who don't have PDI to still use your datapack. An example of this would be `execute unless score @s c.inv.curr matches 2.. run <stuff>` inside an advancement reward file.*
+## Advanced PDI API!
+There are some secret operations that you can do if you really feel the need to. Be aware that these ones I do not technically support if you have problems with it and a player switches dimensions. You're on your own here.
 
-### Q. I don't want to use SEv3, is there a way around it?
-A. I- why? Anyways, if you don't want to use SEv3, I plan to release a stand-alone version. Until then, just give everyone the appropriate admin tag `se.disable.all` to disable functionality. As a bonus, you can give them the tags only as you need it. Don't want homes in creative? Give 'em the tags!
+You can save inventories and restore them at your will if you want to bypass PDI's logic. In theory, you can use them as extra inventories. I suggest you look into the datapack's structure.
 
-
+In addition, you can theoritically modify PDI to include more inventories than 10. If you need more than 10 inventories, you probably have a problem that you should address. However, the template to add more inventories can be found. Like before, I won't give support for this and you should be confident with how PDI works before doing so.
 
 # Final Notes
 In the future, there will be more to the API than there is now. For example, there will be a before-swtich and after-switch tag that you can use to run functions before or after PDI does its magic. 
