@@ -12,7 +12,7 @@ advancement grant @a[scores={pdi.death=1..}] only pdi:respawn 1
 execute as @e[type=fishing_bobber] at @s run scoreboard players operation @s c.inv.curr = @e[tag=pdi.registered,distance=0..] c.inv.curr
 
 # Another note: I am FULLY aware that I'm not taking advantage
-#   of an optimization with not using rx.playerdb:api/get or save self
+#   of an optimization with not using #rx.playerdb:api/v2/get or save self
 #   if it already is done. Although this pack is meant for advanced
 #   users, people are unpredictable. I do NOT trust the user 
 #   to remember to get and safe, so I do it for them so that a 

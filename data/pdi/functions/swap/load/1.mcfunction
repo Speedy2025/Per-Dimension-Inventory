@@ -1,13 +1,13 @@
-function rx.playerdb:api/get_self
+function #rx.playerdb:api/v2/get/self
 
-data modify storage rx:io playerdb.player.data.pdi_cache.inventory set from storage rx:io playerdb.player.data.pdi[0].inventory
+data modify storage rx.playerdb:io player.data.pdi_cache.inventory set from storage rx.playerdb:io player.data.pdi[0].inventory
 function pdi:swap/backend/inventory
 
-data modify storage rx:io playerdb.player.data.pdi_cache.ender_chest set from storage rx:io playerdb.player.data.pdi[0].ender_chest
+data modify storage rx.playerdb:io player.data.pdi_cache.ender_chest set from storage rx.playerdb:io player.data.pdi[0].ender_chest
 function pdi:swap/backend/ender_chest
 
-execute store result score @s pdi.levels run data get storage rx:io playerdb.player.data.pdi[0].xpl
+execute store result score @s pdi.levels run data get storage rx.playerdb:io player.data.pdi[0].xpl
 function pdi:swap/backend/levels/root
 
-execute store result score @s pdi.levels run data get storage rx:io playerdb.player.data.pdi[0].xpp
+execute store result score @s pdi.levels run data get storage rx.playerdb:io player.data.pdi[0].xpp
 function pdi:swap/backend/points/root

@@ -14,3 +14,11 @@ scoreboard objectives add c.inv.curr dummy [{"text":"inv.curr","color":"#5137c4"
 scoreboard objectives add c.inv.prev dummy [{"text":"inv.prev","color":"#5137c4"}]
 scoreboard objectives add pdi.levels dummy [{"text":"levels","color":"#5137c4"}]
 scoreboard objectives add pdi.death deathCount [{"text":"death","color":"#5137c4"}]
+
+# - Forceload -
+
+#Originally I did not want to include this.
+#I know, bad grammar or something.
+function se:misc/dimension/get
+execute positioned 29999998 1 -29999964 run forceload add ~ ~
+setblock 29999998 1 -29999964 yellow_shulker_box
