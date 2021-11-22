@@ -52,8 +52,8 @@ If you don't need to check if PDI exist (like if you're doing a survival-only da
 ## On using PDI's APIs...
 There are (or will be) three main APIs you can use in the form of a function tag.
 1. `pdi:update_mode` - Use this to set dimension & player modes. They WILL go through this unless they have a special bypass tag, detailed later.
-2. `pdi:before_switch` - Use this to handle players that are switching inventories **before** they switch. Useful if you have some temporary items to save.
-3. `pdi:after_switch` - Use this to handle players that are switching inventories **after** they switch. Good to restore or set special items.
+2. `pdi:before_switch` - (Soon) Use this to handle players that are switching inventories **before** they switch. Useful if you have some temporary items to save.
+3. `pdi:after_switch` - (Soon) Use this to handle players that are switching inventories **after** they switch. Good to restore or set special items.
 
 ### On pdi:update_mode...
 This particular one requires a special format for your commands. You can simplify them as you see fit, but for readability I recommend you stick to this format:
