@@ -1,0 +1,18 @@
+{
+  "display": {
+    "title": "Speedy2025",
+    "description": "Server-Ready Datapacks!",
+    "icon": {
+      "item": "minecraft:player_head",
+      "nbt": "{SkullOwner: 'Speedy2025'}"
+    },
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "parent": "global:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

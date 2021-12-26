@@ -16,6 +16,8 @@
 execute in minecraft:the_nether run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 1
 execute in minecraft:overworld run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 1
 execute in minecraft:the_end run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 1
+execute in tser_dim:mining run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 1
+execute in tser_dim:test run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 1
 execute in minecraft:tse/mining run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 4
 execute in minecraft:tse/mushroom_land run scoreboard players set @e[tag=se.dim.marker,tag=!pdi.registered,distance=0..] c.inv.curr 11
 # The above four prefixed with tser_dim or minecraft:tse are safe to remove without causing issues.

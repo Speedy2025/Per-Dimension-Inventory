@@ -1,0 +1,17 @@
+{
+	"display": {
+		"title": "Per-Dimension Inventory (PDI)",
+		"description": "Dimension-based storages for creating multi-gamemode experiences!",
+		"icon": {
+			"item": "minecraft:chest"
+		},
+		"announce_to_chat": false,
+		"show_toast": false
+	},
+	"parent": "global:speedy2025",
+	"criteria": {
+		"trigger": {
+			"trigger": "minecraft:tick"
+		}
+	}
+}
