@@ -1,3 +1,6 @@
+#Pre-Save Update
+function #pdi:before_swap
+
 #Save Inventories
 execute if score @s c.inv.prev matches 1 run function pdi:swap/save/1
 execute if score @s c.inv.prev matches 2 run function pdi:swap/save/2
@@ -27,3 +30,6 @@ execute if score @s c.inv.curr matches 7 run function pdi:swap/load/7
 execute if score @s c.inv.curr matches 8 run function pdi:swap/load/8
 execute if score @s c.inv.curr matches 9 run function pdi:swap/load/9
 execute if score @s c.inv.curr matches 10 run function pdi:swap/load/10
+
+#Post-Load Update
+function #pdi:after_swap
